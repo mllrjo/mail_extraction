@@ -11,11 +11,12 @@ from utils import extract_dom_features, make_graph, infer_domain_fields
 # === CONFIG ===
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 SWDE_ROOT = os.path.abspath(os.path.join(PROJECT_DIR, "..", "swde"))
-INDEX_FILE = os.path.join(PROJECT_DIR, "swde_index.json")
+INDEX_NAME = os.getenv("SWDE_INDEX", "swde_index.json")
+INDEX_FILE = os.path.join(PROJECT_DIR, INDEX_NAME)
 SAVE_DIR = os.path.join(PROJECT_DIR, "gnn_data")
 GT_BASE = os.path.join(SWDE_ROOT, "html_data", "groundtruth", "groundtruth")
 
-MAX_FILES = 10  # Small batch for debugging
+MAX_FILES = 5  # Small batch for debugging
 
 os.makedirs(SAVE_DIR, exist_ok=True)
 

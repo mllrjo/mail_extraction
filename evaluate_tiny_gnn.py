@@ -4,13 +4,24 @@
 import os
 import torch
 from torch_geometric.data import Data
-from utils import TinyGNN
+from utils import TinyGNN, GNNDataset
 from sklearn.metrics import accuracy_score, f1_score, classification_report
 from tqdm import tqdm
 
+# === Smart model loading based on SWDE_INDEX mode ===
+mode = os.getenv("SWDE_INDEX", "swde_index.json")
+model_tag = "curated" if "curated" in mode.lower() else "full"
+MODEL_PATH = f"models/tinygnn_{model_tag}.pth"
+print(f"📦 Loading model from: {MODEL_PATH}")
+
 # === CONFIG ===
 GNN_DIR = "gnn_data"
-MODEL_PATH = "models/tinygnn_model.pth"
+# === Smarter dynamic model naming ===
+mode = os.getenv("SWDE_INDEX", "swde_index.json")
+if "curated" in mode.lower():
+    MODEL_PATH = "models/tinygnn_curated.pth"
+else:
+    MODEL_PATH = "models/tinygnn_full.pth"
 
 # === LOAD MODEL + METADATA ===
 print(f"📦 Loading model from {MODEL_PATH}")
@@ -20,7 +31,8 @@ model = TinyGNN(
     hidden_dim=64,
     output_dim=checkpoint["output_dim"]
 )
-model.load_state_dict(checkpoint["state_dict"])
+model.load_state_dict(checkpoint["model_state_dict"])
+
 model.eval()
 
 label2idx = checkpoint["label2idx"]

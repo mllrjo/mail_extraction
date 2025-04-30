@@ -7,7 +7,7 @@ from collections import defaultdict
 
 # === CONFIG ===
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-INDEX_FILE = os.path.join(PROJECT_DIR, "swde_index.json")
+INDEX_FILE = os.getenv("SWDE_INDEX", "swde_index.json")
 
 # === VALIDATOR ===
 def validate_swde_index(index_file):

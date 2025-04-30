@@ -10,7 +10,13 @@ from tqdm import tqdm
 
 # === CONFIG ===
 GNN_DIR = "gnn_data"
-MODEL_PATH = "models/tinygnn_model.pth"
+# === Smarter dynamic model naming ===
+mode = os.getenv("SWDE_INDEX", "swde_index.json")
+if "curated" in mode.lower():
+    MODEL_PATH = "models/tinygnn_curated.pth"
+else:
+    MODEL_PATH = "models/tinygnn_full.pth"
+
 
 # === LOAD MODEL + METADATA ===
 print(f"📦 Loading model from {MODEL_PATH}")

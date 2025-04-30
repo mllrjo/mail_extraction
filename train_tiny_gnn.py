@@ -8,13 +8,26 @@ from torch_geometric.data import DataLoader
 from utils import TinyGNN, GNNDataset, infer_domain_fields
 from tqdm import tqdm
 
+# === Smarter dynamic model naming ===
+mode = os.getenv("SWDE_INDEX", "swde_index.json")
+if "curated" in mode.lower():
+    MODEL_PATH = "models/tinygnn_curated.pth"
+else:
+    MODEL_PATH = "models/tinygnn_full.pth"
+# === Smart model saving based on SWDE_INDEX mode ===
+mode = os.getenv("SWDE_INDEX", "swde_index.json")
+model_tag = "curated" if "curated" in mode.lower() else "full"
+MODEL_PATH = f"models/tinygnn_{model_tag}.pth"
+print(f"💾 Saving model to: {MODEL_PATH}")
+
+
+
 # === CONFIG ===
 GRAPH_DIR = "gnn_data"
-MODEL_PATH = "models/tinygnn_model.pth"
 BATCH_SIZE = 8
-EPOCHS = 10
+EPOCHS = 50
 HIDDEN_DIM = 64
-LEARNING_RATE = 0.01
+LEARNING_RATE = 0.005
 GT_BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "swde", "html_data", "groundtruth", "groundtruth"))
 
 # === DETECT DOMAIN FROM DATA ===
@@ -48,27 +61,38 @@ optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
 # === TRAIN LOOP ===
 print("🚀 Starting training...")
-model.train()
+print("🚀 Starting training...")
+losses = []
+
 for epoch in range(1, EPOCHS + 1):
+    model.train()
     total_loss = 0
+
     for batch in loader:
         optimizer.zero_grad()
         out = model(batch)
         mask = (batch.y != -1)
+
+        if mask.sum() == 0:
+            continue  # Skip batches with no labels (safety)
+
         loss = F.cross_entropy(out[mask], batch.y[mask])
         loss.backward()
         optimizer.step()
         total_loss += loss.item()
+
     avg_loss = total_loss / len(loader)
+    losses.append(avg_loss)
     print(f"🧪 Epoch {epoch:02d}: Loss = {avg_loss:.4f}")
 
-# === SAVE MODEL ===
-os.makedirs("models", exist_ok=True)
-torch.save({
-    "input_dim": input_dim,
-    "output_dim": output_dim,
-    "label2idx": label2idx,
-    "state_dict": model.state_dict()
-}, MODEL_PATH)
-print(f"✅ Model saved to {MODEL_PATH}")
+    # === AFTER TRAINING ===
+    # Save model and loss history
+    torch.save({
+        "model_state_dict": model.state_dict(),
+        "input_dim": input_dim,
+        "output_dim": output_dim,
+        "label2idx": label2idx,
+        "losses": losses,   # ✅ Save losses for plotting later
+    }, MODEL_PATH)
+    print(f"✅ Model saved to {MODEL_PATH}")
 
