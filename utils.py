@@ -11,6 +11,23 @@ import re
 import gzip
 from torch_geometric.data import Data, Dataset
 
+def load_graphs_by_domain(data_dir, domain=None):
+    import os
+    import torch
+
+    all_graphs = []
+    for fname in os.listdir(data_dir):
+        if not fname.endswith(".pt"):
+            continue
+        path = os.path.join(data_dir, fname)
+        data = torch.load(path)
+
+        if domain is not None and getattr(data, "domain", None) != domain:
+            continue
+
+        all_graphs.append(data)
+
+    return all_graphs
 #####################################
 from collections import defaultdict
 

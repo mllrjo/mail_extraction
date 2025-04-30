@@ -46,8 +46,8 @@ class TinyGNNWithTags(torch.nn.Module):
         return x
 
     def save_label_map(self, label2idx, path="label_map.json"):
-        # ✅ Patch: use raw field names as keys
-        json.dump(label2idx, open(path, "w"), indent=2)
+        with open(path, "w") as f:
+            json.dump(label2idx, f)
 
     @staticmethod
     def load_label_map(path="label_map.json"):

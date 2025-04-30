@@ -6,10 +6,10 @@
     "pageID": "1902",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1902.htm",
     "groundtruth": {
-      "name": "YOLI'S SEAFOOD & GRILL",
-      "phone": "972-231-5078",
+      "cuisine": "SEAFOOD",
       "address": "1600 North Plano Road \u00a0Richardson, TX 75081",
-      "cuisine": "SEAFOOD"
+      "phone": "972-231-5078",
+      "name": "YOLI'S SEAFOOD & GRILL"
     }
   },
   {
@@ -19,10 +19,10 @@
     "pageID": "1916",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1916.htm",
     "groundtruth": {
-      "name": "BRICK OVEN GOURMET CAFE",
-      "phone": "972-234-0520",
+      "cuisine": "PIZZA",
       "address": "2010 North Plano Road \u00a0Richardson, TX 75082",
-      "cuisine": "PIZZA"
+      "phone": "972-234-0520",
+      "name": "BRICK OVEN GOURMET CAFE"
     }
   },
   {
@@ -32,10 +32,10 @@
     "pageID": "1080",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1080.htm",
     "groundtruth": {
-      "name": "MARISCOS 2000",
-      "phone": "972-432-0954",
+      "cuisine": "MEXICAN",
       "address": "2053 West NW Hwy \u00a0Dallas, TX 75220",
-      "cuisine": "MEXICAN"
+      "phone": "972-432-0954",
+      "name": "MARISCOS 2000"
     }
   },
   {
@@ -45,10 +45,10 @@
     "pageID": "1094",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1094.htm",
     "groundtruth": {
-      "name": "MIGHTY QUICK FOOD STORE",
-      "phone": "972-298-6644",
+      "cuisine": "SNACK FOOD",
       "address": "4330 Gannon Lane Suite \u00a0Dallas, TX 75237",
-      "cuisine": "SNACK FOOD"
+      "phone": "972-298-6644",
+      "name": "MIGHTY QUICK FOOD STORE"
     }
   },
   {
@@ -58,10 +58,10 @@
     "pageID": "0361",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0361.htm",
     "groundtruth": {
-      "name": "SUSHI YOKOHAMA",
-      "phone": "972-733-0223",
+      "cuisine": "SUSHI",
       "address": "19009 Preston Road \u00a0Dallas, TX 75252",
-      "cuisine": "SUSHI"
+      "phone": "972-733-0223",
+      "name": "SUSHI YOKOHAMA"
     }
   }
 ]

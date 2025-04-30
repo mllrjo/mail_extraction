@@ -53,7 +53,9 @@ def main():
 
         node_feats, edges, node_texts, tag_names = extract_dom_features(html_content)
 
-        label2idx = {field: i for i, field in enumerate(fields)}
+        fields = sorted(domain_fields.get(domain, []))  # or manually sorted list
+        label2idx = {field: idx for idx, field in enumerate(fields)}
+
         y_indices = [-1] * len(node_feats)
 
         for field in fields:
