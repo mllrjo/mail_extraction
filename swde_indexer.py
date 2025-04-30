@@ -15,7 +15,7 @@ GT_BASE = os.path.join(SWDE_ROOT, "html_data", "groundtruth", "groundtruth")
 SAVE_JSON = os.path.join(PROJECT_DIR, "swde_index.json")
 DEBUG_SMALL_BATCH = True   # Limit initial run for safety
 
-MAX_FILES = 20 if DEBUG_SMALL_BATCH else None
+MAX_FILES = 30 if DEBUG_SMALL_BATCH else None
 
 # === DYNAMIC FIELD DETECTION ===
 def infer_domain_fields(gt_base):

@@ -44,7 +44,6 @@ def main():
             print(f"⚠️ HTML file missing: {html_path}")
             continue
 
-        # Extract features from HTML
         try:
             with open(html_path, "r", encoding="utf-8", errors="ignore") as f:
                 html_content = f.read()
@@ -52,32 +51,45 @@ def main():
             print(f"⚠️ Error reading HTML {html_path}: {e}")
             continue
 
-        node_feats, edges, node_texts = extract_dom_features(html_content)
+        node_feats, edges, node_texts, tag_names = extract_dom_features(html_content)
 
-        # Build label mapping for this page
         label2idx = {field: i for i, field in enumerate(fields)}
         y_indices = [-1] * len(node_feats)
 
         for field in fields:
             if field not in item["groundtruth"]:
-                continue  # Skip if this field missing for this page
+                continue
 
             gt_value = item["groundtruth"][field]
             if not gt_value:
-                continue  # Skip empty groundtruth
+                continue
 
             gt_value = html.unescape(gt_value).strip().lower()
 
-            # Try to find a matching node
             for idx, text in enumerate(node_texts):
                 if not text:
                     continue
-                if gt_value in text.lower():
+                text_norm = text.lower().replace(" ", "")
+                gt_norm = gt_value.replace(" ", "")
+                if gt_norm in text_norm or text_norm in gt_norm:
+                    print(f"🕵️ Field '{field}' → GT: '{gt_value}' | MATCHED: '{text}'")
                     y_indices[idx] = label2idx[field]
                     break
 
-        # Save graph
-        graph = make_graph(node_feats, edges, y_indices, domain=item["domain"])
+        label_counts = {}
+        for label in y_indices:
+            if label != -1:
+                label_name = fields[label]
+                label_counts[label_name] = label_counts.get(label_name, 0) + 1
+        print(f"Labels for page {item['pageID']}: {label_counts}")
+
+        if len(node_feats) == 0:
+            print(f"⚠️ Skipping page {item['pageID']} due to empty node_feats")
+            continue
+
+        graph = make_graph(node_feats, edges, y_indices, domain=item["domain"], tags=tag_names)
+        print("Tag IDs present:", hasattr(graph, "tag_ids"), graph.tag_ids.shape if hasattr(graph, "tag_ids") else "N/A")
+
         save_path = os.path.join(SAVE_DIR, f"sample_{item['pageID']}.pt")
         torch.save(graph, save_path)
 

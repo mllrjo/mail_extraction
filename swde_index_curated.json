@@ -6,9 +6,9 @@
     "pageID": "1902",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1902.htm",
     "groundtruth": {
-      "address": "1600 North Plano Road \u00a0Richardson, TX 75081",
-      "cuisine": "SEAFOOD",
       "name": "YOLI'S SEAFOOD & GRILL",
+      "cuisine": "SEAFOOD",
+      "address": "1600 North Plano Road \u00a0Richardson, TX 75081",
       "phone": "972-231-5078"
     }
   },
@@ -19,9 +19,9 @@
     "pageID": "1916",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1916.htm",
     "groundtruth": {
-      "address": "2010 North Plano Road \u00a0Richardson, TX 75082",
-      "cuisine": "PIZZA",
       "name": "BRICK OVEN GOURMET CAFE",
+      "cuisine": "PIZZA",
+      "address": "2010 North Plano Road \u00a0Richardson, TX 75082",
       "phone": "972-234-0520"
     }
   },
@@ -32,9 +32,9 @@
     "pageID": "1080",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1080.htm",
     "groundtruth": {
-      "address": "2053 West NW Hwy \u00a0Dallas, TX 75220",
-      "cuisine": "MEXICAN",
       "name": "MARISCOS 2000",
+      "cuisine": "MEXICAN",
+      "address": "2053 West NW Hwy \u00a0Dallas, TX 75220",
       "phone": "972-432-0954"
     }
   },
@@ -45,9 +45,9 @@
     "pageID": "1094",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1094.htm",
     "groundtruth": {
-      "address": "4330 Gannon Lane Suite \u00a0Dallas, TX 75237",
-      "cuisine": "SNACK FOOD",
       "name": "MIGHTY QUICK FOOD STORE",
+      "cuisine": "SNACK FOOD",
+      "address": "4330 Gannon Lane Suite \u00a0Dallas, TX 75237",
       "phone": "972-298-6644"
     }
   },
@@ -58,9 +58,9 @@
     "pageID": "0361",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0361.htm",
     "groundtruth": {
-      "address": "19009 Preston Road \u00a0Dallas, TX 75252",
-      "cuisine": "SUSHI",
       "name": "SUSHI YOKOHAMA",
+      "cuisine": "SUSHI",
+      "address": "19009 Preston Road \u00a0Dallas, TX 75252",
       "phone": "972-733-0223"
     }
   },
@@ -71,9 +71,9 @@
     "pageID": "1719",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1719.htm",
     "groundtruth": {
-      "address": "3330 North Galloway \u00a0Mesquite, TX 75150",
-      "cuisine": "COFFEE SHOP",
       "name": "FANCY THAT TEAROOM & GIFT SHOP",
+      "cuisine": "COFFEE SHOP",
+      "address": "3330 North Galloway \u00a0Mesquite, TX 75150",
       "phone": "214-562-3405"
     }
   },
@@ -84,9 +84,9 @@
     "pageID": "0407",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0407.htm",
     "groundtruth": {
-      "address": "1602B Main Street \u00a0Dallas, TX 75201",
-      "cuisine": "AMERICAN",
       "name": "UMLAUT",
+      "cuisine": "AMERICAN",
+      "address": "1602B Main Street \u00a0Dallas, TX 75201",
       "phone": "214-748-2368"
     }
   },
@@ -97,9 +97,9 @@
     "pageID": "0413",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0413.htm",
     "groundtruth": {
-      "address": "5600 West Lovers Lane \u00a0Dallas, TX 75209",
-      "cuisine": "DESSERT",
       "name": "ULTIMATE SMOOTHIES",
+      "cuisine": "DESSERT",
+      "address": "5600 West Lovers Lane \u00a0Dallas, TX 75209",
       "phone": "214-350-8254"
     }
   },
@@ -110,9 +110,9 @@
     "pageID": "0375",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0375.htm",
     "groundtruth": {
-      "address": "4500 Mckinney Avenue \u00a0Dallas, TX 75205",
-      "cuisine": "SUSHI",
       "name": "SUSHI ON MCKINNEY JAPANESE (Closed)",
+      "cuisine": "SUSHI",
+      "address": "4500 Mckinney Avenue \u00a0Dallas, TX 75205",
       "phone": "214-521-0969"
     }
   },
@@ -123,9 +123,9 @@
     "pageID": "1043",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1043.htm",
     "groundtruth": {
-      "address": "1511 Elm Street \u00a0Dallas, TX 75201",
-      "cuisine": "HOT DOGS",
       "name": "HOT DOG PLACE",
+      "cuisine": "HOT DOGS",
+      "address": "1511 Elm Street \u00a0Dallas, TX 75201",
       "phone": "214-855-5330"
     }
   },
@@ -136,9 +136,9 @@
     "pageID": "1725",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1725.htm",
     "groundtruth": {
-      "address": "1818 Rodeo Drive \u00a0Mesquite, TX 75149",
-      "cuisine": "BARBECUE",
       "name": "MESQUITE RODEO BARBECUE",
+      "cuisine": "BARBECUE",
+      "address": "1818 Rodeo Drive \u00a0Mesquite, TX 75149",
       "phone": "972-285-8777"
     }
   },
@@ -149,9 +149,9 @@
     "pageID": "1731",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1731.htm",
     "groundtruth": {
-      "address": "4301 North Midland Drive \u00a0Midland, TX",
-      "cuisine": "CAFE",
       "name": "ROSA'S CAFE & TORTILLA FACTORY",
+      "cuisine": "CAFE",
+      "address": "4301 North Midland Drive \u00a0Midland, TX",
       "phone": "915-520-0488"
     }
   },
@@ -162,9 +162,9 @@
     "pageID": "0349",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0349.htm",
     "groundtruth": {
-      "address": "3662 West Camp Wisdom Road \u00a0Dallas, TX 75237",
-      "cuisine": "CAFE",
       "name": "SOUTHWEST COUNTRY KITCHEN",
+      "cuisine": "CAFE",
+      "address": "3662 West Camp Wisdom Road \u00a0Dallas, TX 75237",
       "phone": "972-709-7472"
     }
   },
@@ -175,9 +175,9 @@
     "pageID": "1057",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1057.htm",
     "groundtruth": {
-      "address": "1921 Commerce Street \u00a0Dallas, TX 75201",
-      "cuisine": "SUBS",
       "name": "LUCKY DUCKY'S SUBS",
+      "cuisine": "SUBS",
+      "address": "1921 Commerce Street \u00a0Dallas, TX 75201",
       "phone": "214-741-6339"
     }
   },
@@ -188,9 +188,9 @@
     "pageID": "0822",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0822.htm",
     "groundtruth": {
-      "address": "3432 South Loop 12 #1044 \u00a0Dallas, TX 75216",
-      "cuisine": "CHINESE",
       "name": "COOKING FOR CHRIST",
+      "cuisine": "CHINESE",
+      "address": "3432 South Loop 12 #1044 \u00a0Dallas, TX 75216",
       "phone": "972-288-9661"
     }
   },
@@ -201,9 +201,9 @@
     "pageID": "1282",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1282.htm",
     "groundtruth": {
-      "address": "2645 Arapaho Road \u00a0Garland, TX 75044",
-      "cuisine": "PIZZA",
       "name": "PIZZA INN",
+      "cuisine": "PIZZA",
+      "address": "2645 Arapaho Road \u00a0Garland, TX 75044",
       "phone": "972-496-9000"
     }
   },
@@ -214,9 +214,9 @@
     "pageID": "0188",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0188.htm",
     "groundtruth": {
-      "address": "3520 Oak Lawn Avenue \u00a0Dallas, TX 75219",
-      "cuisine": "SEAFOOD",
       "name": "PAPPADEAUX SEAFOOD KITCHEN",
+      "cuisine": "SEAFOOD",
+      "address": "3520 Oak Lawn Avenue \u00a0Dallas, TX 75219",
       "phone": "214-521-4700"
     }
   },
@@ -227,9 +227,9 @@
     "pageID": "1296",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1296.htm",
     "groundtruth": {
-      "address": "4119 Forest Lane \u00a0Garland, TX 75042",
-      "cuisine": "ITALIAN",
       "name": "AZTEC TORTILLAS",
+      "cuisine": "ITALIAN",
+      "address": "4119 Forest Lane \u00a0Garland, TX 75042",
       "phone": "972-272-0959"
     }
   },
@@ -240,9 +240,9 @@
     "pageID": "0836",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0836.htm",
     "groundtruth": {
-      "address": "1915 Greenville Avenue \u00a0Dallas, TX 75206",
-      "cuisine": "BARBECUE",
       "name": "GENGHIS GRILL",
+      "cuisine": "BARBECUE",
+      "address": "1915 Greenville Avenue \u00a0Dallas, TX 75206",
       "phone": "214-841-9990"
     }
   },
@@ -253,10 +253,140 @@
     "pageID": "0605",
     "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0605.htm",
     "groundtruth": {
-      "address": "2829 West NW Hwy \u00a0Dallas, TX 75220",
-      "cuisine": "ITALIAN",
       "name": "CAPRICORNIO",
+      "cuisine": "ITALIAN",
+      "address": "2829 West NW Hwy \u00a0Dallas, TX 75220",
       "phone": "214-350-4156"
+    }
+  },
+  {
+    "domain": "restaurant",
+    "website": "pickarestaurant",
+    "year": "2000",
+    "pageID": "0163",
+    "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0163.htm",
+    "groundtruth": {
+      "name": "OMNI DALLAS HOTEL PARK WEST",
+      "cuisine": "HAWAIIAN",
+      "address": "1590 635 Lbj Freeway \u00a0Dallas, TX 75234",
+      "phone": "972-869-4300"
+    }
+  },
+  {
+    "domain": "restaurant",
+    "website": "pickarestaurant",
+    "year": "2000",
+    "pageID": "1269",
+    "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1269.htm",
+    "groundtruth": {
+      "name": "SUBWAY SANDWICHES & SALADS",
+      "cuisine": "SUBS",
+      "address": "3322 Broadway Boulevard \u00a0Garland, TX 75043",
+      "phone": "972-840-9339"
+    }
+  },
+  {
+    "domain": "restaurant",
+    "website": "pickarestaurant",
+    "year": "2000",
+    "pageID": "0177",
+    "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0177.htm",
+    "groundtruth": {
+      "name": "PANERA BREAD",
+      "cuisine": "BAKERY",
+      "address": "7839 Park Lane \u00a0Dallas, TX 75225",
+      "phone": "214-692-1299"
+    }
+  },
+  {
+    "domain": "restaurant",
+    "website": "pickarestaurant",
+    "year": "2000",
+    "pageID": "0611",
+    "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0611.htm",
+    "groundtruth": {
+      "name": "BOBO CHINA",
+      "cuisine": "CHINESE",
+      "address": "10630 Church Road \u00a0Dallas, TX 75238",
+      "phone": "214-349-2600"
+    }
+  },
+  {
+    "domain": "restaurant",
+    "website": "pickarestaurant",
+    "year": "2000",
+    "pageID": "0639",
+    "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0639.htm",
+    "groundtruth": {
+      "name": "BLACK EYED PEA RESTAURANT",
+      "cuisine": "HOMECOOKING",
+      "address": "4460 Belt Line Road \u00a0Dallas, TX 75244",
+      "phone": "972-701-0166"
+    }
+  },
+  {
+    "domain": "restaurant",
+    "website": "pickarestaurant",
+    "year": "2000",
+    "pageID": "1527",
+    "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1527.htm",
+    "groundtruth": {
+      "name": "GRANADA MARKET/DELI",
+      "cuisine": "SNACK FOOD",
+      "address": "387 East Las Colinas \u00a0Irving, TX 75039",
+      "phone": "972-830-8445"
+    }
+  },
+  {
+    "domain": "restaurant",
+    "website": "pickarestaurant",
+    "year": "2000",
+    "pageID": "1241",
+    "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1241.htm",
+    "groundtruth": {
+      "name": "TEXAS STARDSON (CLOSED)",
+      "cuisine": "ECLECTIC",
+      "address": "2930 Parkwood \u00a0Frisco, TX",
+      "phone": "972-668-8108"
+    }
+  },
+  {
+    "domain": "restaurant",
+    "website": "pickarestaurant",
+    "year": "2000",
+    "pageID": "1255",
+    "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1255.htm",
+    "groundtruth": {
+      "name": "ABBEY TEXAS CAFE",
+      "cuisine": "BREAKFAST",
+      "address": "7185 Main Street \u00a0Frisco, TX 75034",
+      "phone": "972-335-3812"
+    }
+  },
+  {
+    "domain": "restaurant",
+    "website": "pickarestaurant",
+    "year": "2000",
+    "pageID": "1533",
+    "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/1533.htm",
+    "groundtruth": {
+      "name": "MCDONALD'S",
+      "cuisine": "FAST FOOD",
+      "address": "5220 North Macarthur Boulevard \u00a0Irving, TX 75038",
+      "phone": "972-714-4754"
+    }
+  },
+  {
+    "domain": "restaurant",
+    "website": "pickarestaurant",
+    "year": "2000",
+    "pageID": "0956",
+    "html": "html_data/restaurant/restaurant/restaurant-pickarestaurant(2000)/0956.htm",
+    "groundtruth": {
+      "name": "FILLING STATION THE DALLAS",
+      "cuisine": "AMERICAN",
+      "address": "5445 La Sierra Drive \u00a0Dallas, TX 75231",
+      "phone": "214-691-4488"
     }
   }
 ]

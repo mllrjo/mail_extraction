@@ -60,10 +60,13 @@ def extract_dom_features(html_content):
     node_texts = []
     idx_counter = [0]
     parent_stack = []
+    tag_names = []  # ✅ New: store HTML tag names
 
     def recurse(node, parent_idx=None):
         if isinstance(node, str):
             return
+
+        tag_names.append(node.name if hasattr(node, "name") else "text")
 
         idx = idx_counter[0]
         idx_counter[0] += 1
@@ -85,10 +88,16 @@ def extract_dom_features(html_content):
         for child in getattr(node, "children", []):
             recurse(child, idx)
         parent_stack.pop()
-
+       
     recurse(soup.body or soup)
 
-    return node_feats, edges, node_texts
+    # ✅ Sanity check (optional)
+    assert len(tag_names) == len(node_feats), f"Mismatch: {len(tag_names)} tags vs {len(node_feats)} nodes"
+    if len(tag_names) != len(node_feats):
+        print(f"⚠️ Tag mismatch: {len(tag_names)} tags vs {len(node_feats)} nodes")
+
+
+    return node_feats, edges, node_texts, tag_names
 
 
 if __name__ == "__main__" and os.environ.get("TEST_DOM_FEATURES") == "1":
@@ -103,7 +112,8 @@ if __name__ == "__main__" and os.environ.get("TEST_DOM_FEATURES") == "1":
 ########################################
 from torch_geometric.data import Data
 
-def make_graph(node_feats, edges, labels, domain=None):
+def make_graph(node_feats, edges, labels, domain=None, tags=None):
+
     x = torch.tensor(node_feats, dtype=torch.float)
     edge_index = torch.tensor(edges, dtype=torch.long).t().contiguous()
     y = torch.tensor(labels, dtype=torch.long)
@@ -112,6 +122,10 @@ def make_graph(node_feats, edges, labels, domain=None):
 
     if domain is not None:
         data.domain = domain
+
+    if tags is not None and len(tags) == len(node_feats):
+        tag_tensor = torch.tensor([hash(tag) % (2**16) for tag in tags], dtype=torch.long)
+        data.tag_ids = tag_tensor
 
     return data
 

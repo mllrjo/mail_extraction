@@ -1,5 +1,8 @@
 # File: curate_swde_batch.py
 # Description: Build a clean mini SWDE batch with well-labeled pages.
+INDEX_PATH = "/Users/jonathanmiller/Desktop/Dev/structHTML/ClaudeAPI/NewProject/swde_index.json"
+CURATED_PATH = "/Users/jonathanmiller/Desktop/Dev/structHTML/ClaudeAPI/NewProject/swde_index_curated.json"
+
 
 import os
 import json
