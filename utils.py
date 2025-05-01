@@ -11,6 +11,43 @@ import re
 import gzip
 from torch_geometric.data import Data, Dataset
 
+# In: utils.py
+
+def infer_label_map_from_graphs(graphs):
+    field_names = set()
+
+    for g in graphs:
+        if hasattr(g, "field_labels"):
+            field_names.update(g.field_labels.keys())
+        elif hasattr(g, "y") and g.y.numel() > 0:
+            unique_labels = g.y.unique().tolist()
+            for label in unique_labels:
+                if label >= 0:
+                    field_names.add(f"label_{int(label)}")
+
+    # Make sure label_0 ... label_N are in sorted order by inferred index
+    sorted_fields = sorted(field_names, key=lambda s: int(s.split('_')[-1]) if s.startswith("label_") else s)
+    return {field: idx for idx, field in enumerate(sorted_fields)}
+###########################
+def get_domain_from_graphs(graphs):
+    """
+    Extracts domain from the first graph in a list (assumes all graphs belong to the same domain).
+    Raises ValueError if domain is missing or inconsistent.
+    """
+    if not graphs:
+        raise ValueError("Graph list is empty.")
+
+    domain = getattr(graphs[0], "domain", None)
+    if domain is None:
+        raise ValueError("No domain attribute found in graph data.")
+
+    for g in graphs:
+        if getattr(g, "domain", None) != domain:
+            raise ValueError("Inconsistent domain values found among graphs.")
+
+    return domain
+##############################
+
 def load_graphs_by_domain(data_dir, domain=None):
     import os
     import torch

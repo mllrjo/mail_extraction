@@ -1,58 +1,69 @@
-# File: models/tinygnn_with_tags.py
+# File: train_tiny_gnn.py
 
 import torch
 import torch.nn.functional as F
-from torch_geometric.nn import GCNConv
+from torch_geometric.loader import DataLoader
+from models.tinygnn_with_tags import TinyGNNWithTags
+from utils import load_graphs_by_domain, infer_label_map_from_graphs
+import os
 import json
 
-class TinyGNNWithTags(torch.nn.Module):
-    def __init__(self, input_dim, out_dim):
-        super().__init__()
-        self.conv1 = GCNConv(input_dim, 32)
-        self.conv2 = GCNConv(32, out_dim)
-        self.out_dim = out_dim
+GNN_DATA_DIR = "gnn_data"
+DOMAIN = "restaurant"
+MODEL_PATH = "models/tinygnn_full.pth"
+LABEL_MAP_PATH = "label_map.json"
 
-    def forward(self, data):
-        x, edge_index = data.x, data.edge_index
 
-        # 🛡️ Sanity check: guard against invalid label indices during training
-        if hasattr(data, 'y') and data.y.numel() > 0 and data.y.max() >= self.out_dim:
-            msg = f"⚠️ Label {data.y.max().item()} out of bounds for output dim {self.out_dim}"
-            with open("label_error.log", "a") as log:
-                log.write(msg + "\n")
+def train():
+    # 🔹 Load training data
+    graphs = load_graphs_by_domain(GNN_DATA_DIR, DOMAIN)
+    loader = DataLoader(graphs, batch_size=1, shuffle=True)
 
-            # Detailed debug: write all labels and label map if available
-            with open("label_debug.log", "a") as dbg:
-                dbg.write("======== DEBUG INFO ========\n")
-                dbg.write(f"Max label: {data.y.max().item()}, Out dim: {self.out_dim}\n")
-                dbg.write(f"All labels: {data.y.tolist()}\n")
-                if hasattr(data, 'label2idx'):
-                    dbg.write(f"label2idx: {data.label2idx}\n")
-                if hasattr(data, 'x'):
-                    dbg.write(f"Input feature shape: {data.x.shape}\n")
-                if hasattr(data, 'tag_ids'):
-                    dbg.write(f"Tag IDs: {data.tag_ids.tolist()[:10]} ... (truncated)\n")
-                dbg.write("===========================\n\n")
+    # 🔹 Infer label map from data
+    label2idx = infer_label_map_from_graphs(graphs)
+    idx2label = {v: k for k, v in label2idx.items()}
+    out_dim = len(label2idx)
 
-            raise ValueError("Invalid label index detected in batch.")
+    # 🔹 Save label map to disk
+    with open(LABEL_MAP_PATH, "w") as f:
+        json.dump(label2idx, f, indent=2)
 
-        # 🩹 Mask out unlabeled nodes
-        mask = data.y >= 0
-        assert mask.sum() > 0, "No labeled nodes in this batch!"
+    # 🔹 Get input dim from sample
+    input_dim = graphs[0].x.shape[1]
 
-        x = self.conv1(x, edge_index)
-        x = F.relu(x)
-        x = self.conv2(x, edge_index)
-        return x
+    # 🔹 Initialize model
+    model = TinyGNNWithTags(input_dim=input_dim, out_dim=out_dim)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
 
-    def save_label_map(self, label2idx, path="label_map.json"):
-        # ✅ Patch: use raw field names as keys
-        json.dump(label2idx, open(path, "w"), indent=2)
+    print("🚀 Starting training...")
+    for epoch in range(1, 51):
+        model.train()
+        total_loss = 0
+        for batch in loader:
+            optimizer.zero_grad()
 
-    @staticmethod
-    def load_label_map(path="label_map.json"):
-        with open(path, "r") as f:
-            label2idx = json.load(f)
-        idx2label = {v: k for k, v in label2idx.items()}
-        return label2idx, idx2label
+            # 🧪 Sanity check: skip invalid batches
+            if batch.y.numel() > 0 and batch.y.max() >= out_dim:
+                print(f"⚠️ Skipping batch with invalid label index: max label = {batch.y.max().item()}, out_dim = {out_dim}")
+                continue
+
+            out = model(batch)
+            mask = batch.y >= 0
+            loss = F.cross_entropy(out[mask], batch.y[mask])
+            loss.backward()
+            optimizer.step()
+            total_loss += loss.item()
+
+        print(f"🧪 Epoch {epoch:02d}: Loss = {total_loss:.4f}")
+
+    # 🔹 Save model checkpoint
+    torch.save({
+        "model_state_dict": model.state_dict(),
+        "input_dim": input_dim,
+        "out_dim": out_dim
+    }, MODEL_PATH)
+    print(f"✅ Model saved to {MODEL_PATH}")
+
+if __name__ == "__main__":
+    train()
 
